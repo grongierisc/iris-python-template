@@ -1,0 +1,9 @@
+{
+
+    "host" : "localhost",
+    "port" : 1972,
+    "namespace" : "USER",
+    "login" : "SuperUser",
+    "password" : "SYS"
+
+}

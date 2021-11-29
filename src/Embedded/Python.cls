@@ -1,8 +1,8 @@
 /// embedded python example
-Class ObjectScript.Python
+Class ObjectScript.Embbeded.Python
 {
 
-/// HelloWorld
+/// HelloWorld with a parameter
 ClassMethod HelloWorld(name As %String) As %Boolean [ Language = python ]
 {
     print("Hello "+name)

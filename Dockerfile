@@ -1,4 +1,4 @@
-ARG IMAGE=arti.iscinternal.com/intersystems/iris:2021.1.0PYTHON.336.0
+ARG IMAGE=arti.iscinternal.com/intersystems/iris:2022.1.0PYNEW.107.0
 
 FROM $IMAGE
 # copy files
@@ -9,6 +9,7 @@ USER root
 # Update package and install sudo
 RUN apt-get update && apt-get install -y \
 	nano \
+	python3-pip \
 	sudo && \
 	/bin/echo -e ${ISC_PACKAGE_MGRUSER}\\tALL=\(ALL\)\\tNOPASSWD: ALL >> /etc/sudoers && \
 	sudo -u ${ISC_PACKAGE_MGRUSER} sudo echo enabled passwordless sudo-ing for ${ISC_PACKAGE_MGRUSER}
@@ -27,15 +28,27 @@ RUN iris start IRIS \
 # create Python env
 ENV PYTHON_PATH=/usr/irissys/bin/irispython
 ENV PIP_PATH=/usr/irissys/bin/irispip
-ENV PYTHON_SRC_PATH=/opt/irisapp/src/Python
+ENV SRC_PATH=/opt/irisapp
 ENV IRISUSERNAME "SuperUser"
 ENV IRISPASSWORD "SYS"
-ENV PATH "/usr/irissys/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/irisowner/bin"
+#ENV PATH "/usr/irissys/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/irisowner/bin"
 
-RUN ${PIP_PATH} install -r ${PYTHON_SRC_PATH}/requirements.txt
+# Requirement for embedded python
+RUN ${PIP_PATH} install -r ${SRC_PATH}/src/Python/requirements.txt
 
-# Create embbede python kernel
-COPY src/Python/kernel.json /usr/irissys/lib/python3.9/site-packages/IPython/kernel/kernel.json
+# Install Native API
+COPY misc/intersystems_irispython-3.2.0-py3-none-any.whl /usr/irissys/dev/python/intersystems_irispython-3.2.0-py3-none-any.whl
+RUN /usr/bin/pip3 install /usr/irissys/dev/python/intersystems_irispython-3.2.0-py3-none-any.whl
+
+# Install Jupyter 
+RUN pip3 install jupyter
+# install irispython kernel
+RUN /usr/irissys/bin/irispip install ipykernel
+RUN mkdir /home/irisowner/.local/share/jupyter/kernels/irispython
+COPY misc/kernels/irispython/kernel.json /home/irisowner/.local/share/jupyter/kernels/irispython/kernel.json 
+# install objectscript kernel
+RUN mkdir /home/irisowner/.local/share/jupyter/kernels/objectscript
+COPY misc/kernels/objectscript/* /home/irisowner/.local/share/jupyter/kernels/objectscript/
 
 # Durty hack to support sqlite3
-RUN cp /usr/lib/python3.6/lib-dynload/_sqlite3.cpython-36m-x86_64-linux-gnu.so /usr/irissys/lib/python3.9/lib-dynload/_sqlite3.cpython-39-x86_64-linux-gnu.so
+# RUN cp /usr/lib/python3.6/lib-dynload/_sqlite3.cpython-36m-x86_64-linux-gnu.so /usr/irissys/lib/python3.9/lib-dynload/_sqlite3.cpython-39-x86_64-linux-gnu.so

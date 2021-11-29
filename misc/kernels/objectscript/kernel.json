@@ -1,0 +1,4 @@
+{
+  "argv":["python", "/home/irisowner/.local/share/jupyter/kernels/objectscript/kernel.py", "-f", "{connection_file}"],
+  "display_name":"ObjectScript"
+}
