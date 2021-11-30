@@ -1,4 +1,4 @@
-import iris
+import irisnative
 
 # Modify connection info based on your environment
 host = "localhost"
@@ -8,5 +8,13 @@ username = "_SYSTEM"
 password = "SYS"
 
 # create database connection and IRIS instance
-connection = iris.createConnection("localhost", 1972, "USER", "superuser", "SYS", sharedmemory = False)
-irisObject = iris.createIris(connection)
+connection = irisnative.createConnection("localhost", 1972, "USER", "superuser", "SYS", sharedmemory = False)
+myIris = irisnative.createIris(connection)
+
+# classMethod
+passenger = myIris.classMethodObject("Titanic.Table.Passenger","%OpenId",1)
+print(passenger.get("name"))
+
+# global
+myIris.set("hello","myGlobal")
+print(myIris.get("myGlobal"))
