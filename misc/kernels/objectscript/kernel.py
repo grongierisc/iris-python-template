@@ -48,6 +48,9 @@ class ObjectScriptKernel(Kernel):
                     code = "\n".join(code.splitlines()[1:])
                 else:
                     code = " ".join(code.splitlines()[1:])
+            else:
+                code = " ".join(code.splitlines()[0:])
+
 
             execution_result = json.loads(self.execute_code(code,arg))
 
