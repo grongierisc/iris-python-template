@@ -1,8 +1,9 @@
 ARG IMAGE=arti.iscinternal.com/intersystems/iris:2022.1.0PYNEW.107.0
+ARG IMAGE=arti.iscinternal.com/intersystems/iris-community:2021.2.0.611.0
 
 FROM $IMAGE
 # copy files
-COPY key/iris.key /usr/irissys/mgr/iris.key
+#COPY key/iris.key /usr/irissys/mgr/iris.key
 
 USER root
 
@@ -10,6 +11,7 @@ USER root
 RUN apt-get update && apt-get install -y \
 	nano \
 	python3-pip \
+	python3-venv \
 	sudo && \
 	/bin/echo -e ${ISC_PACKAGE_MGRUSER}\\tALL=\(ALL\)\\tNOPASSWD: ALL >> /etc/sudoers && \
 	sudo -u ${ISC_PACKAGE_MGRUSER} sudo echo enabled passwordless sudo-ing for ${ISC_PACKAGE_MGRUSER}
@@ -45,7 +47,7 @@ RUN pip3 install jupyter
 # install irispython kernel
 RUN /usr/irissys/bin/irispip install ipykernel
 RUN mkdir /home/irisowner/.local/share/jupyter/kernels/irispython
-COPY misc/kernels/irispython/kernel.json /home/irisowner/.local/share/jupyter/kernels/irispython/kernel.json 
+COPY misc/kernels/irispython/* /home/irisowner/.local/share/jupyter/kernels/irispython/
 # install objectscript kernel
 RUN mkdir /home/irisowner/.local/share/jupyter/kernels/objectscript
 COPY misc/kernels/objectscript/* /home/irisowner/.local/share/jupyter/kernels/objectscript/
