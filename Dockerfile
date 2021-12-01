@@ -1,9 +1,9 @@
 ARG IMAGE=arti.iscinternal.com/intersystems/iris:2022.1.0PYNEW.107.0
-ARG IMAGE=arti.iscinternal.com/intersystems/iris-community:2021.2.0.611.0
+#ARG IMAGE=arti.iscinternal.com/intersystems/iris-community:2021.2.0.611.0
 
 FROM $IMAGE
 # copy files
-#COPY key/iris.key /usr/irissys/mgr/iris.key
+COPY key/iris.key /usr/irissys/mgr/iris.key
 
 USER root
 

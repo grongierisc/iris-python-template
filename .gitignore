@@ -28,4 +28,5 @@ __pycache__/
 *.py[cod]
 *$py.class
 key/iris.key
-src/Python/notebooks/.ipynb_checkpoints/hello-checkpoint.ipynb
+src/Python/notebooks/.ipynb_checkpoints/*.ipynb
+

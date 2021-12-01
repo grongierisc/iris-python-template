@@ -9,7 +9,7 @@ services:
         - IRIS_PASSWORD=${IRIS_PASSWORD:-SYS}
     volumes:
       - ./:/irisdev/app/
-    #command: -a "sh /opt/irisapp/server_start.sh"
+    command: -a "sh /opt/irisapp/server_start.sh" --key /opt/irisapp/key/iris.key
     environment:
       - ISC_CPF_MERGE_FILE=/irisdev/app/merge.cpf
     ports:
@@ -18,3 +18,13 @@ services:
     - 4040:8080
     - 4041:8081
     - 8888:8888
+  gateway: 
+    image: containers.intersystems.com/intersystems/webgateway:2021.1.0.215.0
+    ports:
+      - "80:80"
+    restart: on-failure
+    volumes:
+      - ./misc/CSP.ini:/opt/webgateway/bin/CSP.ini
+      - ./misc/CSP.conf:/opt/webgateway/bin/CSP.conf
+    environment:
+      - ISC_CSP_CONF_FILE=/opt/webgateway/bin/CSP.conf
