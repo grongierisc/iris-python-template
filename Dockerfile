@@ -29,18 +29,17 @@ RUN iris start IRIS \
 
 # create Python env
 ENV PYTHON_PATH=/usr/irissys/bin/irispython
-ENV PIP_PATH=/usr/irissys/bin/irispip
 ENV SRC_PATH=/opt/irisapp
 ENV IRISUSERNAME "SuperUser"
 ENV IRISPASSWORD "SYS"
 #ENV PATH "/usr/irissys/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/irisowner/bin"
 
 # Requirement for embedded python
-RUN ${PIP_PATH} install -r ${SRC_PATH}/src/Python/requirements.txt
+RUN ${PYTHON_PATH} -m pip install -r ${SRC_PATH}/src/Python/requirements.txt
 
 # Install Native API
 COPY misc/intersystems_irispython-3.2.0-py3-none-any.whl /usr/irissys/dev/python/intersystems_irispython-3.2.0-py3-none-any.whl
-RUN /usr/bin/pip3 install /usr/irissys/dev/python/intersystems_irispython-3.2.0-py3-none-any.whl
+RUN pip3 install /usr/irissys/dev/python/intersystems_irispython-3.2.0-py3-none-any.whl
 
 # Install Jupyter 
 RUN pip3 install jupyter
