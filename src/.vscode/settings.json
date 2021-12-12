@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+    
+        "Dockerfile*": "dockerfile",
+        "iris.script": "objectscript"
+      },
+    "objectscript.conn" :{
+      "ns": "USER",
+      "username": "SuperUser",
+      "password": "SYS",
+      "host":"host.docker.internal",
+      "port": 52775,
+      "active": true
+    }
+
+}
