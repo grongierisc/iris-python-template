@@ -9,8 +9,8 @@
       "username": "SuperUser",
       "password": "SYS",
       "docker-compose": {
-        "service": "gateway",
-        "internalPort": 80,
+        "service": "iris",
+        "internalPort": 52773,
         
       },
       "active": true
