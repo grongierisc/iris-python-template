@@ -1,9 +1,9 @@
-ARG IMAGE=arti.iscinternal.com/intersystems/iris:2022.1.0PYNEW.107.0
-#ARG IMAGE=arti.iscinternal.com/intersystems/iris-community:2021.2.0.611.0
+ARG IMAGE=containers.intersystems.com/intersystems/iris-community:2021.2.0.617.0
 
 FROM $IMAGE
-# copy files
-COPY key/iris.key /usr/irissys/mgr/iris.key
+
+# For non community version
+# COPY key/iris.key /usr/irissys/mgr/iris.key
 
 USER root
 
@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
 	/bin/echo -e ${ISC_PACKAGE_MGRUSER}\\tALL=\(ALL\)\\tNOPASSWD: ALL >> /etc/sudoers && \
 	sudo -u ${ISC_PACKAGE_MGRUSER} sudo echo enabled passwordless sudo-ing for ${ISC_PACKAGE_MGRUSER}
 
+# create dev directory
 WORKDIR /opt/irisapp
 RUN chown ${ISC_PACKAGE_MGRUSER}:${ISC_PACKAGE_IRISGROUP} /opt/irisapp
 USER ${ISC_PACKAGE_MGRUSER}
@@ -38,6 +39,7 @@ ENV IRISPASSWORD "SYS"
 RUN ${PYTHON_PATH} -m pip install -r ${SRC_PATH}/src/Python/requirements.txt
 
 # Install Native API
+# For now Native API wheel is not embedded in container
 COPY misc/intersystems_irispython-3.2.0-py3-none-any.whl /usr/irissys/dev/python/intersystems_irispython-3.2.0-py3-none-any.whl
 RUN pip3 install /usr/irissys/dev/python/intersystems_irispython-3.2.0-py3-none-any.whl
 
@@ -51,5 +53,3 @@ COPY misc/kernels/irispython/* /home/irisowner/.local/share/jupyter/kernels/iris
 RUN mkdir /home/irisowner/.local/share/jupyter/kernels/objectscript
 COPY misc/kernels/objectscript/* /home/irisowner/.local/share/jupyter/kernels/objectscript/
 
-# Durty hack to support sqlite3
-# RUN cp /usr/lib/python3.6/lib-dynload/_sqlite3.cpython-36m-x86_64-linux-gnu.so /usr/irissys/lib/python3.9/lib-dynload/_sqlite3.cpython-39-x86_64-linux-gnu.so
