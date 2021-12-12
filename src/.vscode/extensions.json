@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "intersystems.language-server",
+        "intersystems-community.vscode-objectscript",
+        "ms-python.vscode-pylance",
+        "ms-python.python"
+    ]
+}
