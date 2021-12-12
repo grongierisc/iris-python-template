@@ -5,7 +5,7 @@ connection = irisnative.createConnection("localhost", 1972, "USER", "superuser",
 myIris = irisnative.createIris(connection)
 
 # classMethod
-passenger = myIris.classMethodObject("Titanic.Table.Passenger","%OpenId",2674)
+passenger = myIris.classMethodObject("Titanic.Table.Passenger","%OpenId",1)
 print(passenger.get("name"))
 
 # global
