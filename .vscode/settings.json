@@ -13,6 +13,9 @@
         "internalPort": 52773,
         
       },
+      "links": {
+        "Notebooks":"http://localhost:8888"
+      },
       "active": true
     }
 
