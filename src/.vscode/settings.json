@@ -11,6 +11,9 @@
       "host":"host.docker.internal",
       "port": 52775,
       "active": true
-    }
+    },
+
+    "python.defaultInterpreterPath": "/usr/irissys/bin/irispython",
+
 
 }

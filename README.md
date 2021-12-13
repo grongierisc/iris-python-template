@@ -32,7 +32,15 @@ Install [VSCode](https://code.visualstudio.com/), [Docker](https://marketplace.v
 Open /src/ObjectScript/Embedded/Python.cls class and try to make changes - it will be compiled in running IRIS docker container.
 
 ### Start coding with Embedded Python
-The easiest 
+The easiest way is to run VsCode in the container.
+
+To attach to a Docker container, either select **Remote-Containers: Attach to Running Container...** from the Command Palette (`kbstyle(F1)`) or use the **Remote Explorer** in the Activity Bar and from the **Containers** view, select the **Attach to Container** inline action on the container you want to connect to.
+
+![Containers Explorer screenshot](https://github.com/microsoft/vscode-docs/raw/main/docs/remote/images/containers/containers-attach.png)
+
+Then configure your python interpreter to /usr/irissys/bin/irispython
+
+<img width="1614" alt="PythonInterpreter" src="https://user-images.githubusercontent.com/47849411/145864423-2de24aaa-036c-4beb-bda0-3a73fe15ccbd.png">
 
 ### Start coding with Notebooks
 Open this url : http://localhost:8888/tree
