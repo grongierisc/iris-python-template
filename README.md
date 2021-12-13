@@ -1,5 +1,5 @@
-# iris-python-template
-Template project with various in Python code to be used with InterSystems IRIS community Edition docker container.
+# 1. iris-python-template
+Template project with various Python code to be used with InterSystems IRIS community Edition docker container.
 
 Featuring :
  * Notebook 
@@ -11,9 +11,40 @@ Featuring :
 
 ![Diagram](https://user-images.githubusercontent.com/47849411/145866257-cc88109b-db0b-4fed-8886-fddb4c31947d.png)
 
-# Installation 
+# 2. Table of Contents
 
-## Docker
+- [1. iris-python-template](#1-iris-python-template)
+- [2. Table of Contents](#2-table-of-contents)
+- [3. Installation](#3-installation)
+  - [3.1. Docker](#31-docker)
+- [4. How to start coding](#4-how-to-start-coding)
+  - [4.1. Prerequisites](#41-prerequisites)
+    - [4.1.1. Start coding in ObjectScript](#411-start-coding-in-objectscript)
+    - [4.1.2. Start coding with Embedded Python](#412-start-coding-with-embedded-python)
+    - [4.1.3. Start coding with Notebooks](#413-start-coding-with-notebooks)
+- [5. What's inside the repository](#5-whats-inside-the-repository)
+  - [5.1. Dockerfile](#51-dockerfile)
+  - [5.2. .vscode/settings.json](#52-vscodesettingsjson)
+  - [5.3. .vscode/launch.json](#53-vscodelaunchjson)
+  - [5.4. .vscode/extensions.json](#54-vscodeextensionsjson)
+  - [5.5. src folder](#55-src-folder)
+    - [5.5.1. src/ObjectScript](#551-srcobjectscript)
+      - [5.5.1.1. src/ObjectScript/Embedded/Python.cls](#5511-srcobjectscriptembeddedpythoncls)
+      - [5.5.1.2. src/ObjectScript/Gateway/Python.cls](#5512-srcobjectscriptgatewaypythoncls)
+    - [5.5.2. src/Python](#552-srcpython)
+      - [5.5.2.1. src/Python/embedded/demo.cls](#5521-srcpythonembeddeddemocls)
+      - [5.5.2.2. src/Python/native/demo.cls](#5522-srcpythonnativedemocls)
+      - [5.5.2.3. src/Python/flask](#5523-srcpythonflask)
+        - [5.5.2.3.1. How it works](#55231-how-it-works)
+        - [5.5.2.3.2. Launching the flask server](#55232-launching-the-flask-server)
+    - [5.5.3. src/Notebooks](#553-srcnotebooks)
+      - [5.5.3.1. src/Notebooks/HelloWorldEmbedded.ipynb](#5531-srcnotebookshelloworldembeddedipynb)
+      - [5.5.3.2. src/Notebooks/IrisNative.ipynb](#5532-srcnotebooksirisnativeipynb)
+      - [5.5.3.3. src/Notebooks/ObjectScript.ipynb](#5533-srcnotebooksobjectscriptipynb)
+
+# 3. Installation 
+
+## 3.1. Docker
 The repo is dockerised so you can  clone/git pull the repo into any local directory
 
 ```
@@ -31,17 +62,17 @@ Or, open the cloned folder in VSCode, start docker-compose and open the URL via 
 <img width="1136" alt="VsCodeNotebooks" src="https://user-images.githubusercontent.com/47849411/145720162-9cb46af8-d780-4719-99ab-ad67a005b271.png">
 
 
-# How to start coding
-## Prerequisites
+# 4. How to start coding
+## 4.1. Prerequisites
 Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
 
 This repository is ready to code in VSCode with ObjectScript plugin.
 Install [VSCode](https://code.visualstudio.com/), [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) and [ObjectScript](https://marketplace.visualstudio.com/items?itemName=daimor.vscode-objectscript) plugin and open the folder in VSCode.
 
-### Start coding in ObjectScript
+### 4.1.1. Start coding in ObjectScript
 Open /src/ObjectScript/Embedded/Python.cls class and try to make changes - it will be compiled in running IRIS docker container.
 
-### Start coding with Embedded Python
+### 4.1.2. Start coding with Embedded Python
 The easiest way is to run VsCode in the container.
 
 To attach to a Docker container, either select **Remote-Containers: Attach to Running Container...** from the Command Palette (`kbstyle(F1)`) or use the **Remote Explorer** in the Activity Bar and from the **Containers** view, select the **Attach to Container** inline action on the container you want to connect to.
@@ -52,7 +83,7 @@ Then configure your python interpreter to /usr/irissys/bin/irispython
 
 <img width="1614" alt="PythonInterpreter" src="https://user-images.githubusercontent.com/47849411/145864423-2de24aaa-036c-4beb-bda0-3a73fe15ccbd.png">
 
-### Start coding with Notebooks
+### 4.1.3. Start coding with Notebooks
 Open this url : http://localhost:8888/tree
 
 Then you have access to three different notebooks with three differents kernels.
@@ -63,9 +94,9 @@ Then you have access to three different notebooks with three differents kernels.
 
 <img width="1219" alt="Notebooks" src="https://user-images.githubusercontent.com/47849411/145859252-f7324e89-2d68-4cf1-8e9d-e072c28a94cd.png">
 
-# What's inside the repository
+# 5. What's inside the repository
 
-## Dockerfile
+## 5.1. Dockerfile
 
 A dockerfile which install some python dependancies (pip, venv) and sudo in the container for conviencies.
 Then it create the dev directory and copy in it this git repository.
@@ -74,17 +105,17 @@ Use the related docker-compose.yml to easily setup additional parametes like por
 Use .env/ file to adjust the dockerfile being used in docker-compose.
 
 
-## .vscode/settings.json
+## 5.2. .vscode/settings.json
 
-Settings file to let you immedietly code in VSCode with [VSCode ObjectScript plugin](https://marketplace.visualstudio.com/items?itemName=daimor.vscode-objectscript))
+Settings file to let you immedietly code in VSCode with [VSCode ObjectScript plugin](https://marketplace.visualstudio.com/items?itemName=daimor.vscode-objectscript)
 
-## .vscode/launch.json
+## 5.3. .vscode/launch.json
 Config file if you want to debug with VSCode ObjectScript
 
 [Read about all the files in this article](https://community.intersystems.com/post/dockerfile-and-friends-or-how-run-and-collaborate-objectscript-projects-intersystems-iris)
 
-## .vscode/extensions.json
-Recommenadation file to add extensions if you want to run with VSCode in the container.
+## 5.4. .vscode/extensions.json
+Recommendation file to add extensions if you want to run with VSCode in the container.
 
 [More information here](https://code.visualstudio.com/docs/remote/containers)
 
@@ -92,13 +123,13 @@ Recommenadation file to add extensions if you want to run with VSCode in the con
 
 This is very useful to work with embedded python.
 
-## src folder
+## 5.5. src folder
 This folder is devied in two parts, one for ObjectScript example and one for Python code.
 
-### src/ObjectScript
+### 5.5.1. src/ObjectScript
 Different piece of code that shows how to use python in IRIS.
 
-#### src/ObjectScript/Embedded/Python.cls
+#### 5.5.1.1. src/ObjectScript/Embedded/Python.cls
 All comments are in french to let you impove your French skills too.
 
 ```objectscript
@@ -203,7 +234,7 @@ USER>zw demo.DemoPyhtonToPython()
  * DemoObjectScriptToPython
    * An ObjectScript function who show how to call an python function
 
-#### src/ObjectScript/Gateway/Python.cls
+#### 5.5.1.2. src/ObjectScript/Gateway/Python.cls
 An ObjectScript class who show how to call an external phyton code with the gateway functionnality.
 In this example python code is **not executed** in the same process of IRIS.
 
@@ -233,10 +264,10 @@ ClassMethod Demo() As %Status
 }
 ```
 
-### src/Python
+### 5.5.2. src/Python
 Different piece of python code that shows how to use embedded python in IRIS.
 
-#### src/Python/embedded/demo.cls
+#### 5.5.2.1. src/Python/embedded/demo.cls
 All comments are in french to let you impove your French skills too.
 
 ```python
@@ -257,7 +288,7 @@ To run this example you have to use iris python shell :
 /usr/irissys/bin/irispython /opt/irisapp/src/Python/embedded/demo.py
 ```
 
-#### src/Python/native/demo.cls
+#### 5.5.2.2. src/Python/native/demo.cls
 Show how to use native api in python code.
 
 ```python
@@ -290,7 +321,7 @@ Then you can run this python code
 
 Note that in this case a connection is made to iris database, this mean, this code is executed in a different thread than the IRIS one.
 
-#### src/Python/flask
+#### 5.5.2.3. src/Python/flask
 
 A full demo of the combiantion between embedded python and the micro framework flask.
 You can test this end point : 
@@ -299,7 +330,53 @@ You can test this end point :
 GET http://localhost:4040/api/passengers?currPage=1&pageSize=1
 ```
 
-#### src/Python/notebooks
+##### 5.5.2.3.1. How it works
+In order to use embedded Python, we use `irispython` as a python interepreter, and do:
+```python
+import iris
+```
+Right at the beginning of the file. 
+
+We will then be able to run methods such as:
+
+![flaskExample](https://raw.githubusercontent.com/thewophile-beep/integrated-ml-demo/main/misc/img/flaskExample.png)
+
+As you can see, in order to GET a passenger with an ID, we just execute a query and use its result set. 
+
+We can also directly use the IRIS objects:
+
+![flaskObjectExample](https://raw.githubusercontent.com/thewophile-beep/integrated-ml-demo/main/misc/img/flaskObjectExample.png)
+
+Here, we use an SQL query to get all the IDs in the table, and we then retreive each passenger from the table with the `%OpenId()` method from the `Titanic.Table.Passenger` class (note that since `%` is an illegal character in Python, we use `_` instead).
+
+Thanks to Flask, we implement all of our routes and methods that way. 
+
+##### 5.5.2.3.2. Launching the flask server
+
+To launch the server, we use `gunicorn` with `irispython`. 
+
+In the docker-compose file, we add the following line:
+````yaml
+iris:
+  command: -a "sh /opt/irisapp/server_start.sh"
+````
+That will launch, after the container is started (thanks to the `-a` flag), the following script:
+````bash
+#!/bin/bash
+
+cd ${SRC_PATH}/src/Python/flask
+
+${PYTHON_PATH} -m gunicorn --bind "0.0.0.0:8080" wsgi:app &
+
+exit 1
+````
+With the environment variables defined in the Dockerfile as follows:
+````dockerfile
+ENV PYTHON_PATH=/usr/irissys/bin/irispython
+ENV SRC_PATH=/opt/irisapp/
+````
+
+### 5.5.3. src/Notebooks
 Three notebooks with three different kernels :
 
  * One python3 kernel to run native api
@@ -310,17 +387,17 @@ Notebooks can be access here http://localhost:8888/tree
 
 <img width="1219" alt="Notebooks" src="https://user-images.githubusercontent.com/47849411/145859252-f7324e89-2d68-4cf1-8e9d-e072c28a94cd.png">
 
-#### src/Python/notebooks/HelloWorldEmbedded.ipynb
+#### 5.5.3.1. src/Notebooks/HelloWorldEmbedded.ipynb
 This notebook uses IRIS embedded python kernel.
 
 It shows example to open and save persistent classes and how to run sql queries.
 
-#### src/Python/notebooks/IrisNative.ipynb
+#### 5.5.3.2. src/Notebooks/IrisNative.ipynb
 This notebook uses vanilla python kernel.
 
 It shows example run iris native apis.
 
-#### src/Python/notebooks/ObjectScript.ipynb
+#### 5.5.3.3. src/Notebooks/ObjectScript.ipynb
 This notebook uses ObjectScript kernel.
 
 It shows example to run ObjectSCript code and how to use embedded pythoon in ObjectScript.
