@@ -1,9 +1,9 @@
 # iris-python-template
 Template project in Python with InterSystems IRIS community Edition docker container 
 
-## Installation 
+# Installation 
 
-### Docker
+## Docker
 The repo is dockerised so you can  clone/git pull the repo into any local directory
 
 ```
@@ -21,25 +21,29 @@ Or, open the cloned folder in VSCode, start docker-compose and open the URL via 
 <img width="1136" alt="VsCodeNotebooks" src="https://user-images.githubusercontent.com/47849411/145720162-9cb46af8-d780-4719-99ab-ad67a005b271.png">
 
 
-## How to start coding
-### Prerequisites
+# How to start coding
+## Prerequisites
 Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
 
 This repository is ready to code in VSCode with ObjectScript plugin.
 Install [VSCode](https://code.visualstudio.com/), [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) and [ObjectScript](https://marketplace.visualstudio.com/items?itemName=daimor.vscode-objectscript) plugin and open the folder in VSCode.
 
-#### Start coding in ObjectScript
+### Start coding in ObjectScript
 Open /src/ObjectScript/Embedded/Python.cls class and try to make changes - it will be compiled in running IRIS docker container.
 
-#### Start coding in Python
+### Start coding with Embedded Python
+The easiest 
 
+### Start coding with Notebooks
+Open this url : http://localhost:8888/tree
 
+Then you have access to three different notebooks with three differents kernels.
 
-[Read more about folder setup for InterSystems ObjectScript](https://community.intersystems.com/post/simplified-objectscript-source-folder-structure-package-manager)
+ * One Embedded Python kernel
+ * One ObjectScript kernel
+ * One vanilla python3 kernel 
 
-## What is in this template ?
-
-TODO
+<img width="1219" alt="Notebooks" src="https://user-images.githubusercontent.com/47849411/145859252-f7324e89-2d68-4cf1-8e9d-e072c28a94cd.png">
 
 # What's inside the repository
 
@@ -286,4 +290,20 @@ Three notebooks with three different kernels :
 
 Notebooks can be access here http://localhost:8888/tree
 
+<img width="1219" alt="Notebooks" src="https://user-images.githubusercontent.com/47849411/145859252-f7324e89-2d68-4cf1-8e9d-e072c28a94cd.png">
+
+#### src/Python/notebooks/HelloWorldEmbedded.ipynb
+This notebook uses IRIS embedded python kernel.
+
+It shows example to open and save persistent classes and how to run sql queries.
+
+#### src/Python/notebooks/IrisNative.ipynb
+This notebook uses vanilla python kernel.
+
+It shows example run iris native apis.
+
+#### src/Python/notebooks/ObjectScript.ipynb
+This notebook uses ObjectScript kernel.
+
+It shows example to run ObjectSCript code and how to use embedded pythoon in ObjectScript.
 
