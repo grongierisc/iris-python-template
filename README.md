@@ -280,7 +280,7 @@ print(person.__dict__)
 
 First import iris module that enable embedded python capabilities.
 Open an persistent class with cls function from iris module.
-Note that all "%" function are replaced with "_".
+Note that all `%` function are replaced with `_`.
 
 To run this example you have to use iris python shell :
 
