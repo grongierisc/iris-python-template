@@ -1,5 +1,7 @@
 # iris-python-template
-Template project in Python with InterSystems IRIS community Edition docker container 
+Template project in Python with InterSystems IRIS community Edition docker container.
+
+![Diagram](https://user-images.githubusercontent.com/47849411/145866257-cc88109b-db0b-4fed-8886-fddb4c31947d.png)
 
 # Installation 
 
