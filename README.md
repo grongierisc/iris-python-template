@@ -1,5 +1,13 @@
 # iris-python-template
-Template project in Python with InterSystems IRIS community Edition docker container.
+Template project with various in Python code to be used with InterSystems IRIS community Edition docker container.
+
+Featuring :
+ * Notebook 
+   * Embedded Python Kernel
+   * ObjectScript Kernel
+   * Vanilla Python Kernel
+ * **Flask** + Embedded Python
+ * IRIS Python Native APIs
 
 ![Diagram](https://user-images.githubusercontent.com/47849411/145866257-cc88109b-db0b-4fed-8886-fddb4c31947d.png)
 
