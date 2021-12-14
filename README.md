@@ -2,12 +2,15 @@
 Template project with various Python code to be used with InterSystems IRIS community Edition docker container.
 
 Featuring :
- * Notebook 
+ * Notebooks 
    * Embedded Python Kernel
    * ObjectScript Kernel
    * Vanilla Python Kernel
- * **Flask** + Embedded Python
+ * Embedded Python
+   * Code example
+   * Flask demo
  * IRIS Python Native APIs
+   * Code example
 
 ![Diagram](https://user-images.githubusercontent.com/47849411/145866257-cc88109b-db0b-4fed-8886-fddb4c31947d.png)
 
@@ -48,13 +51,13 @@ Featuring :
 The repo is dockerised so you can  clone/git pull the repo into any local directory
 
 ```
-$ git clone https://github.com/grongierisc/iris-python-template.git
+git clone https://github.com/grongierisc/iris-python-template.git
 ```
 
 Open the terminal in this directory and run:
 
 ```
-$ docker-compose up -d
+docker-compose up -d
 ```
 and open then http://localhost:8888/tree for Notebooks
 
@@ -86,11 +89,11 @@ Then configure your python interpreter to /usr/irissys/bin/irispython
 ### 4.1.3. Start coding with Notebooks
 Open this url : http://localhost:8888/tree
 
-Then you have access to three different notebooks with three differents kernels.
+Then you have access to three different notebooks with three different kernels.
 
- * One Embedded Python kernel
- * One ObjectScript kernel
- * One vanilla python3 kernel 
+ * Embedded Python kernel
+ * ObjectScript kernel
+ * Vanilla python3 kernel 
 
 <img width="1219" alt="Notebooks" src="https://user-images.githubusercontent.com/47849411/145859252-f7324e89-2d68-4cf1-8e9d-e072c28a94cd.png">
 
@@ -100,10 +103,15 @@ Then you have access to three different notebooks with three differents kernels.
 
 A dockerfile which install some python dependancies (pip, venv) and sudo in the container for conviencies.
 Then it create the dev directory and copy in it this git repository.
-It starts IRIS and imports Titanics csv files, then it's activate **%Service_CallIn** for **Python Shell**.
-Use the related docker-compose.yml to easily setup additional parametes like port number and where you map keys and host folders.
-Use .env/ file to adjust the dockerfile being used in docker-compose.
 
+It starts IRIS and imports Titanics csv files, then it activates **%Service_CallIn** for **Python Shell**.
+Use the related docker-compose.yml to easily setup additional parametes like port number and where you map keys and host folders.
+
+This dockerfile ends with the installation of requirements for python modules.
+
+The last part is about installing jupyter notebook and it's kernels.
+
+Use .env/ file to adjust the dockerfile being used in docker-compose.
 
 ## 5.2. .vscode/settings.json
 
@@ -133,7 +141,7 @@ Different piece of code that shows how to use python in IRIS.
 All comments are in french to let you impove your French skills too.
 
 ```objectscript
-/// embedded python example
+/// Embedded python example
 Class ObjectScript.Embbeded.Python Extends %SwizzleObject
 {
 
@@ -217,17 +225,17 @@ Method DemoObjectScriptToPython() As %Status
 
  * HelloWorld
    * Simple function to say Hello in python
-   * It uses the ojectscript wrapper with the tag [ Language = python ]
+   * It uses the OjectScript wrapper with the tag [ Language = python ]
  * compare
    * An python function that compare a string with a regx, if their is a match then print it, if not print that no match has been found
  * compareObjectScript
    * Same function as the python one but in ObjectScript
  * DemoPyhtonToPython
    * Show how to use a python function with python code wrapped in ObjectScript
-```
-USER>set demo = ##class(ObjectScript.Embbeded.Python).%New()
+```objectscript
+set demo = ##class(ObjectScript.Embbeded.Python).%New()
 
-USER>zw demo.DemoPyhtonToPython()
+zw demo.DemoPyhtonToPython()
 ```
  * DemoPyhtonToObjectScript
    * An python function who show how to call an ObjecScript function
@@ -236,6 +244,7 @@ USER>zw demo.DemoPyhtonToPython()
 
 #### 5.5.1.2. src/ObjectScript/Gateway/Python.cls
 An ObjectScript class who show how to call an external phyton code with the gateway functionnality.
+
 In this example python code is **not executed** in the same process of IRIS.
 
 ```objectscript
@@ -243,7 +252,7 @@ In this example python code is **not executed** in the same process of IRIS.
 Class Gateway.Python
 {
 
-/// Demo
+/// Demo of a python gateway to execute python code outside of an iris process.
 ClassMethod Demo() As %Status
 {
     Set sc = $$$OK
@@ -319,7 +328,7 @@ Then you can run this python code
 /usr/bin/python3 /opt/irisapp/src/Python/native/demo.py
 ```
 
-Note that in this case a connection is made to iris database, this mean, this code is executed in a different thread than the IRIS one.
+Note that in this case a connection is made to iris database, this mean, **this code is executed in a different thread than the IRIS one**.
 
 #### 5.5.2.3. src/Python/flask
 
@@ -379,8 +388,8 @@ ENV SRC_PATH=/opt/irisapp/
 ### 5.5.3. src/Notebooks
 Three notebooks with three different kernels :
 
- * One python3 kernel to run native api
- * One embedded python kernel
+ * One Python3 kernel to run native APIs
+ * One Embedded Python kernel
  * One ObjectScript kernel
 
 Notebooks can be access here http://localhost:8888/tree
