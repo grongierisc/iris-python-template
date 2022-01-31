@@ -1,4 +1,4 @@
-ARG IMAGE=containers.intersystems.com/intersystems/iris-community:2021.2.0.617.0
+ARG IMAGE=containers.intersystems.com/intersystems/irishealth-community:2021.2.0.649.0
 
 FROM $IMAGE
 
@@ -36,7 +36,7 @@ ENV IRISPASSWORD "SYS"
 #ENV PATH "/usr/irissys/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/irisowner/bin"
 
 # Requirement for embedded python
-RUN ${PYTHON_PATH} -m pip install -r ${SRC_PATH}/src/Python/requirements.txt
+RUN pip3 install -r ${SRC_PATH}/src/Python/requirements.txt
 
 # Install Native API
 # For now Native API wheel is not embedded in container
@@ -45,11 +45,8 @@ RUN pip3 install /usr/irissys/dev/python/intersystems_irispython-3.2.0-py3-none-
 
 # Install Jupyter 
 RUN pip3 install jupyter
-# install irispython kernel
-RUN /usr/irissys/bin/irispip install ipykernel
 RUN mkdir /home/irisowner/.local/share/jupyter/kernels/irispython
 COPY misc/kernels/irispython/* /home/irisowner/.local/share/jupyter/kernels/irispython/
-# install objectscript kernel
+# Install objectscript kernel
 RUN mkdir /home/irisowner/.local/share/jupyter/kernels/objectscript
 COPY misc/kernels/objectscript/* /home/irisowner/.local/share/jupyter/kernels/objectscript/
-
