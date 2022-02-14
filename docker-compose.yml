@@ -19,7 +19,7 @@ services:
     - 4041:8081
     - 8888:8888
   gateway: 
-    image: containers.intersystems.com/intersystems/webgateway:2021.1.0.215.0
+    image: containers.intersystems.com/intersystems/webgateway:2021.2.0.651.0
     ports:
       - "80:80"
     restart: on-failure
