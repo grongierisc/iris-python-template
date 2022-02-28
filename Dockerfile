@@ -33,6 +33,7 @@ ENV PYTHON_PATH=/usr/irissys/bin/irispython
 ENV SRC_PATH=/opt/irisapp
 ENV IRISUSERNAME "SuperUser"
 ENV IRISPASSWORD "SYS"
+ENV IRISNAMESPACE "USER"
 #ENV PATH "/usr/irissys/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/irisowner/bin"
 
 # Requirement for embedded python
@@ -50,3 +51,5 @@ COPY misc/kernels/irispython/* /home/irisowner/.local/share/jupyter/kernels/iris
 # Install objectscript kernel
 RUN mkdir /home/irisowner/.local/share/jupyter/kernels/objectscript
 COPY misc/kernels/objectscript/* /home/irisowner/.local/share/jupyter/kernels/objectscript/
+
+ENTRYPOINT [ "/tini", "--", "/opt/irisapp/entrypoint.sh" ]

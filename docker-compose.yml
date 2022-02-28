@@ -9,7 +9,6 @@ services:
         - IRIS_PASSWORD=${IRIS_PASSWORD:-SYS}
     volumes:
       - ./:/irisdev/app/
-    command: -a "sh /opt/irisapp/server_start.sh"
     environment:
       - ISC_CPF_MERGE_FILE=/irisdev/app/merge.cpf
     ports:
