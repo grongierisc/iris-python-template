@@ -17,13 +17,4 @@ services:
     - 4040:8080
     - 4041:8081
     - 8888:8888
-  gateway: 
-    image: containers.intersystems.com/intersystems/webgateway:2021.2.0.651.0
-    ports:
-      - "80:80"
-    restart: on-failure
-    volumes:
-      - ./misc/CSP.ini:/opt/webgateway/bin/CSP.ini
-      - ./misc/CSP.conf:/opt/webgateway/bin/CSP.conf
-    environment:
-      - ISC_CSP_CONF_FILE=/opt/webgateway/bin/CSP.conf
+
