@@ -1,0 +1,4 @@
+# Ensure shell scripts and config files get Linux line endings so they work in the container
+* text=auto
+*.sh text eol=lf
+*.conf text eol=lf
