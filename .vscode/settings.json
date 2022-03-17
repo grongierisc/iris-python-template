@@ -10,11 +10,10 @@
       "password": "SYS",
       "docker-compose": {
         "service": "iris",
-        "internalPort": 52773,
-        
+        "internalPort": 52773
       },
       "links": {
-        "Notebooks":"http://localhost:8888"
+        "Notebooks": "http://localhost:8888"
       },
       "active": true
     }
