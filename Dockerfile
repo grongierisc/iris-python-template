@@ -1,4 +1,4 @@
-ARG IMAGE=containers.intersystems.com/intersystems/irishealth-community:2022.1.0.140.0
+ARG IMAGE=intersystemsdc/irishealth-community:latest
 
 FROM $IMAGE
 
