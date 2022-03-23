@@ -23,9 +23,9 @@ class ObjectScriptKernel(Kernel):
     language_version = '1.0'
     banner = 'An ObjectScript kernel'
     language_info = {
-        'name': 'python',
-        'mimetype': 'text/x-python',
-        'file_extension': '.cls',
+        'name': 'objectscript-int',
+        'mimetype': 'text/plain',
+        'file_extension': '.int',
     }
 
     def __init__(self, **kwargs):
