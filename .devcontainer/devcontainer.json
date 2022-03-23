@@ -20,6 +20,7 @@
 		"objectscript.conn" :{
 			"server": "devcontainer",
 			"active": true,
+			"ignoreInstallLanguageServer": true,
 		},
 		"intersystems.servers": {
 			"devcontainer": {
@@ -28,7 +29,7 @@
 				"webServer": {
 					"scheme": "http",
 					"host": "127.0.0.1",
-					"port": 52773
+					"port": 52773,
 				},
 			},
 		},
