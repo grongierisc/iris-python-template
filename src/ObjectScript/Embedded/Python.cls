@@ -39,7 +39,7 @@ Method compareObjectScript(modèle, chaine) As %Status
 }
 
 /// Description
-Method DemoPyhtonToPython() As %Status [ Language = python ]
+Method DemoPythonToPython() As %Status [ Language = python ]
 {
     # expression régulières en python
     # récupérer les différents champs d'une chaîne
@@ -53,7 +53,7 @@ Method DemoPyhtonToPython() As %Status [ Language = python ]
     self.compare(modèle, "abcd")
 }
 
-Method DemoPyhtonToObjectScript() As %Status [ Language = python ]
+Method DemoPythonToObjectScript() As %Status [ Language = python ]
 {
     # expression régulières en python
     # récupérer les différents champs d'une chaîne
