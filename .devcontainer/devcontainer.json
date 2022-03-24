@@ -20,8 +20,8 @@
 		"objectscript.conn" :{
 			"server": "devcontainer",
 			"active": true,
-			"ignoreInstallLanguageServer": true,
 		},
+		"objectscript.ignoreInstallLanguageServer": true,
 		"intersystems.servers": {
 			"devcontainer": {
 				"username": "SuperUser",
