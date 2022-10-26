@@ -7,6 +7,7 @@ services:
       dockerfile : Dockerfile
       args:
         - IRIS_PASSWORD=${IRIS_PASSWORD:-SYS}
+    command: --check-caps false
     volumes:
       - ./:/irisdev/app/
     environment:
